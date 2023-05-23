@@ -5,15 +5,17 @@ import numpy as np
 import cooler
 import scipy.sparse as sps
 from iced import normalization
+import matplotlib.pyplot as plt
 
 def main(args):
     chromosomes = range(1, 23) if args.chromosomes is None else args.chromosomes
 
-    dataset_path = '../../data/pancreatic_islet/hic_raw'
+    dataset_path = '/home/galkowskim/disk_data/data/pancreatic_islet/hic_raw'
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path, exist_ok=True)
 
-    input_path = '{}::resolutions/{}'.format(args.input, args.resolution)
+    input_path = '{}::resolutions/'.format(args.input, args.resolution)
+    input_path = args.input
     obj = cooler.Cooler(input_path)
 
     for i, chr_source in enumerate(chromosomes):
@@ -29,22 +31,22 @@ def main(args):
             output_path = os.path.join(dataset_path, output_hic)
 
             if not os.path.exists(output_path):
-                
+
                 # import ipdb
                 # ipdb.set_trace()
                 contact_matrix = obj.matrix(balance=False, sparse=True).fetch(str(chr_source), str(chr_target))
-                
+
                 contact_matrix = contact_matrix.toarray()
                 contact_matrix = normalization.ICE_normalization(contact_matrix)
                 contact_matrix_sparse = sps.csr_matrix(contact_matrix)
                 sps.save_npz(output_path, contact_matrix_sparse)
             else:
                 print('File already existing. Skip.')
-                
+
 
             if args.save_plot:
                 contact_matrix = sps.load_npz(output_path)
-                plot_path = '../../data/plots/{}/hic_raw'.format(args.dataset)
+                plot_path = 'home/galkowskim/disk_data/data/plots/{}/hic_raw'.format(args.dataset)
                 if not os.path.exists(plot_path):
                     os.makedirs(plot_path, exist_ok=True)
                 plt.figure(dpi=200)
@@ -67,7 +69,6 @@ if __name__ == '__main__':
                         help='Extract also interchromosomal interactions')
     parser.add_argument('--save-plot', default=False, action='store_true')
 
-    
     args = parser.parse_args()
 
     main(args)

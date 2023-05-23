@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def main(args, tcga, tag):
-    dataset_path = '../../data/pancreatic_islet_{}'.format(tag)
+    dataset_path = '/home/galkowskim/disk_data/data/pancreatic_islet_{}'.format(tag)
     if not os.path.exists(dataset_path + '/expression_raw.csv'):
         os.makedirs(dataset_path) 
 

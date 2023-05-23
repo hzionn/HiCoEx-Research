@@ -131,7 +131,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # ToDo: add description
-    parser.add_argument('--data-root', type=str, required=True, default='../../data')
+    parser.add_argument('--data-root', type=str, required=True, default='/home/galkowskim/disk_data/data')
     parser.add_argument('-d', '--dataset', type=str, default='lung_imr90')
     parser.add_argument('--type', type=str, choices=['observed', 'oe'], default='observed')
     parser.add_argument('--chr-src', type=int, default=None)
@@ -147,6 +147,9 @@ if __name__ == '__main__':
     data_folder = '{}/{}/'.format(args.data_root, args.dataset)
     hic_folder = data_folder + 'hic/'
     rna_folder = data_folder + 'rna/'
+    print(f'{data_folder =}')
+    print(f'{hic_folder =}')
+    print(f'{rna_folder =}')
 
     if args.chr_src is None or args.chr_tgt is None:
         rows = []
