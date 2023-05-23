@@ -122,8 +122,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # ipdb.set_trace()
-    device = set_gpu(args.gpu, args.gpu_id)
-    args.device = device
-    set_n_threads(args.n_jobs)
+    # device = set_gpu(args.gpu, args.gpu_id)
+    # args.device = device
+    # set_n_threads(args.n_jobs)
 
     main(args)

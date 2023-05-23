@@ -9,7 +9,7 @@ from utils_link_prediction import generate_embedding
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-root', type=str, required=True, default='../../data')
+    parser.add_argument('--data-root', type=str, required=True, default='/home/galkowskim/disk_data/data')
     parser.add_argument('--dataset', type=str, required=True)
     parser.add_argument('--chromatin-network', type=str, required=True)
     parser.add_argument('--emb-size', type=int, default=16)

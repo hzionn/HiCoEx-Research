@@ -13,7 +13,8 @@ from bionev.utils import load_embedding
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import (accuracy_score, confusion_matrix, f1_score,
+                             precision_score, recall_score, roc_auc_score)
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
@@ -411,7 +412,7 @@ def betweenness_centrality_parallel(G, processes=None):
     node_chunks = list(chunks(G.nodes(), int(G.order() / node_divisor)))
     num_chunks = len(node_chunks)
     bt_sc = p.starmap(
-        nx.betweenness_centrality_source,
+        nx.betweenness_centrality,
         zip([G] * num_chunks, [True] * num_chunks, [None] * num_chunks, node_chunks),
     )
 
