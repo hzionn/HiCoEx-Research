@@ -147,9 +147,6 @@ if __name__ == '__main__':
     data_folder = '{}/{}/'.format(args.data_root, args.dataset)
     hic_folder = data_folder + 'hic/'
     rna_folder = data_folder + 'rna/'
-    print(f'{data_folder =}')
-    print(f'{hic_folder =}')
-    print(f'{rna_folder =}')
 
     if args.chr_src is None or args.chr_tgt is None:
         rows = []
