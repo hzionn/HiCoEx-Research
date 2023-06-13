@@ -79,7 +79,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--labels",
         type=str,
-        help="Path to labels csv (default: Labels to 21 chromosome)",
+        help="Path to labels csv (default: Labels for 21. chromosome)",
         required=True,
         default="ch21_names.csv",
     )
