@@ -2,6 +2,7 @@ import os
 import argparse
 import pandas as pd
 import numpy as np
+import tqdm
 
 
 def main(args):
@@ -19,7 +20,7 @@ def main(args):
     # import ipdb
     # ipdb.set_trace()
     samples_reads_ids = reads.columns
-    for tissue in tissues:
+    for tissue in tqdm.tqdm(tissues):
         print('Tissue', tissue)
         sample_ids = info[info['SMTSD'] == tissue]['SAMPID']
         sample_ids = np.intersect1d(sample_ids, samples_reads_ids)
