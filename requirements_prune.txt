@@ -1,0 +1,13 @@
+torch
+torch-geometric
+pandas
+cooler
+iced
+matplotlib
+networkx
+pydot
+palettable
+scikit-learn
+umap-learn
+tensorboardX
+-e git+https://github.com/galkowskim/BioNEV#egg=BioNEV
